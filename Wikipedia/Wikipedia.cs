@@ -24,6 +24,7 @@ using System.Text.RegularExpressions;
 using System;
 using PluginContracts;
 using System.Collections.Generic;
+using Extensions;
 
 namespace Wikipedia
 {
@@ -75,7 +76,7 @@ namespace Wikipedia
 
         private static string FormatURL(string Subject, int Section = 0)
         {
-            return "http://en.wikipedia.org/w/api.php?action=parse&page=" + Subject + "&format=xml&prop=text&section=" +
+            return "http://en.wikipedia.org/w/api.php?action=parse&page=" + Subject.FindSubject() + "&format=xml&prop=text&section=" +
                 Section.ToString() + "&redirects";
         }
 
