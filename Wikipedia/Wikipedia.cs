@@ -51,7 +51,13 @@ namespace Wikipedia
 
         public string Go(string input)
         {
-            string url = FormatURL(input);
+            string subject = input.FindSubject();
+            if (subject == string.Empty && input.Length > 0)
+            {
+                subject = input;
+            }
+
+            string url = FormatURL(subject);
 
             HtmlDocument doc = GetDocument(url);
             if (!doc.DocumentNode.HasChildNodes)
@@ -76,7 +82,8 @@ namespace Wikipedia
 
         private static string FormatURL(string Subject, int Section = 0)
         {
-            return "http://en.wikipedia.org/w/api.php?action=parse&page=" + Subject.FindSubject() + "&format=xml&prop=text&section=" +
+            Subject = Subject.ToLower().Replace("the ", "").Replace(" ", "%20");
+            return "http://en.wikipedia.org/w/api.php?action=parse&page=" + Subject + "&format=xml&prop=text&section=" +
                 Section.ToString() + "&redirects";
         }
 
