@@ -40,7 +40,7 @@ namespace Weather
                 List<string> actions = new List<string>();
                 actions.Add("current weather");
                 actions.Add("weather");
-                actions.Add("forcast");
+                actions.Add("forecast");
                 return actions;
             }
         }
