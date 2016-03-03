@@ -86,7 +86,7 @@ namespace Weather
             XmlElement hazards = Weather.DocumentElement["entry"]["summary"]; //Weather.SelectNodes("//feed/entry/summary", NameSpaceMgr);
             Hazards = hazards == null ? "" : hazards.InnerText;
 
-            if (input.CleanText().Contains("forcast"))
+            if (input.CleanText().Contains("forecast"))
             {
                 return Forecast;
             }
